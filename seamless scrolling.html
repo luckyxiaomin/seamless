@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+window.onload=function()
+{
+var oBox=document.getElementById('box');
+var aUl=oBox.getElementsByTagName('ul')[0];
+var aImg=oBox.getElementsByTagName('img');
+var timer=null;
+var oBtn01=document.getElementById('btn01');
+var oBtn02=document.getElementById('btn02');
+
+
+aUl.innerHTML=aUl.innerHTML+aUl.innerHTML;
+aUl.style.width=aImg[0].offsetWidth*aImg.length+'px';
+//向左走
+timer=setInterval(function(){
+	if(aUl.offsetLeft>-(aUl.offsetWidth/2))
+	{ 
+	aUl.style.left=aUl.offsetLeft-2+'px';
+	}
+	else
+	{
+		 aUl.style.left='0px';
+	}
+	
+	},30);
+	
+	aUl.onmouseover=function(){
+		clearInterval(timer);
+		};
+		
+    aUl.onmouseout=function(){
+		timer=setInterval(function(){
+	if(aUl.offsetLeft>-(aUl.offsetWidth/2))
+	{ 
+	aUl.style.left=aUl.offsetLeft-2+'px';
+	}
+	else
+	{
+		 aUl.style.left='0px';
+	}
+	
+	},30);
+		};
+		
+		
+ oBtn01.onclick=function(){
+	 clearInterval(timer);
+	 timer=setInterval(function(){
+	if(aUl.offsetLeft>-(aUl.offsetWidth/2))
+	{ 
+	aUl.style.left=aUl.offsetLeft-2+'px';
+	}
+	else
+	{
+		 aUl.style.left='0px';
+	}
+	
+	},30);
+	
+	 };
+	 
+	 
+oBtn02.onclick=function(){
+	clearInterval(timer);
+	timer=setInterval(function(){
+	if(aUl.offsetLeft>0)
+	{ 
+	aUl.style.left=-aUl.offsetWidth/2+'px';
+	}
+	else
+	{
+			aUl.style.left=aUl.offsetLeft+2+'px';
+	}
+	
+	},30);
+	}
+};
+</script>
+<style>
+*{ margin:0px;
+padding:0px;
+border:0px;}
+
+#box{ width:360px;
+height:300px;
+background:#F00;
+position:relative;
+margin:100px auto;
+overflow:hidden;}
+
+#box ul{
+height:300px;
+position:absolute;
+left:0px;
+top:0px;}
+
+#box ul li{
+	 list-style:none;
+	float:left;}
+
+#box ul img{ width:90px;
+height:300px;
+}
+
+#btn01{ position:absolute;
+left:300px;
+top:150px;}
+
+#btn02{ position:absolute;
+right:300px;
+top:150px;}
+</style>
+
+</head>
+
+<body>
+<input id="btn01" type="button" value="向左走"/>
+<input id="btn02" type="button" value="向右走"/>
+<div id="box">
+<ul>
+<li><img src="images/11.jpg"></li>
+<li><img src="images/12.jpg"></li>
+<li><img src="images/14.jpg"></li>
+<li><img src="images/16.jpg"></li>
+</ul>
+</div>
+</body>
+</html>
